@@ -27,7 +27,7 @@ sfFacebookConnect.prototype.gotoLoginPage = function()
   //console.log(this.getSigninUrl());
   document.location.href= this.getSigninUrl();
 };
-sfFacebookConnect.prototype.requireSession = function(forward, callback)
+sfFacebookConnect.prototype.requireSession = function(forward, permissions, callback)
 {
   this.forward = forward;
   if (callback==undefined)
@@ -41,9 +41,9 @@ sfFacebookConnect.prototype.requireSession = function(forward, callback)
     } else {
       // user cancelled login
     }
-  });
+  },{perms: permissions});
 };
-
+// 
 /*
  * Show the feed form. This would be typically called in response to the
  * onclick handler of a "Publish" button, or in the onload event after
