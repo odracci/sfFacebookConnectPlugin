@@ -123,11 +123,17 @@ function facebook_connect_button($forward = '', $callback = '', $options = array
   $options = array_merge($default_options, $options);
 
   $js_arguments = array("'".rawurlencode($forward)."'");
+  
+  $permissions = sprintf("'%s'", implode(',', sfConfig::get('app_facebook_connect_extended_permissions', array())));
+  array_push($js_arguments, $permissions);
+  
   if ($callback != '')
   {
     array_push($js_arguments,$callback);
   }
 
+ 
+  
   $html =
   '
   <script type="text/javascript">
