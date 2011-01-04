@@ -124,7 +124,8 @@ function facebook_connect_button($forward = '', $callback = '', $options = array
 
   $js_arguments = array("'".rawurlencode($forward)."'");
   
-  array_push($js_arguments, "'read_stream'");
+  $permissions = sprintf("'%s'", implode(',', sfConfig::get('app_facebook_connect_extended_permissions', array())));
+  array_push($js_arguments, $permissions);
   
   if ($callback != '')
   {

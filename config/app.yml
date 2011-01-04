@@ -23,4 +23,4 @@ all:
   facebook_connect:
     load_routing:     true
     user_permissions: []
-
+    extended_permissions:  []
